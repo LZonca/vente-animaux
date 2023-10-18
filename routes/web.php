@@ -1,6 +1,6 @@
 <?php
 
-use Hamcrest\Type\IsNumeric;
+use App\Models\Animal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/animaux', function (){
     $titre_page = 'TOUS LES ANIMAUX ILLEGAUX A VENDRE';
-    $animaux = [
-        ['id' => 0, 'type' => 'Chat demoniaque', 'nom' => 'maow', 'prix' => 2500],
-        ['id' => 1, 'type' => 'Monstre', 'nom' => 'blob', 'prix' => 5000],
-        ['id' => 2, 'type' => 'Cracoucas', 'nom' => 'kakaw', 'prix' => 3000],
-        ['id' => 3, 'type' => 'Cochon', 'nom' => 'peppa', 'prix' => 2900],
-    ];
+    $animaux = Animal::all();
     return view('animaux.index', compact('animaux'));
 });
 Route::get('/animaux/create', function () {
@@ -28,24 +23,27 @@ Route::get('/animaux/create', function () {
     return view("animaux.create");
 });
 
-Route::post('/animaux', function ($type, $nom, $prix) {
-
+Route::post('/animaux', function () {
+    $a = new Animal();
+    $a->nom = request()->nom;
+    $a->type = request()->type;
+    $a->prix = request()->prix;
+    $a->date_naissance = request()->date_naissance;
+    $a->save();
+    return redirect('/animaux/'. $a->id);
 });
 
 Route::get('/animaux/{id}', function ($id) {
     $titre_page = "UN ANIMAL ILLEGAL";
-    $animaux = [
-        ['id' => 0, 'type' => 'Chat demoniaque', 'nom' => 'maow', 'prix' => 2500],
-        ['id' => 1, 'type' => 'Monstre', 'nom' => 'blob', 'prix' => 5000],
-        ['id' => 2, 'type' => 'Cracoucas', 'nom' => 'kakaw', 'prix' => 3000],
-        ['id' => 3, 'type' => 'Cochon', 'nom' => 'peppa', 'prix' => 2900],
-    ];
-        try{
-            $animal = $animaux[$id];
+    //$animaux = Animal::all();
+        /*try{
+            $animal = Animal::find($id);
         return view('animaux.show', compact('animal'));
         }catch (Exception $e) {
             return response('CET ANIMAL N\'EXISTE PAS', 404);
-        }
+        }*/
+        $animal = Animal::findOrFail($id);
+        return view('animaux.show', compact('animal'));
 });
 
 
