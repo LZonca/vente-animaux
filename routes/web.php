@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/animaux', function (){
-    $titre_page = 'TOUS LES ANIMAUX';
+    $titre_page = 'TOUS LES ANIMAUX ILLEGAUX A VENDRE';
     $animaux = [
         ['id' => 0, 'type' => 'Chat demoniaque', 'nom' => 'maow', 'prix' => 2500],
         ['id' => 1, 'type' => 'Monstre', 'nom' => 'blob', 'prix' => 5000],
