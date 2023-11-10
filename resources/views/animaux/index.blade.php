@@ -7,6 +7,7 @@
         <th>Type</th>
         <th>Nom</th>
         <th>Prix</th>
+        <th>Controles</th>
     </tr>
     @foreach ($animaux as $animal)
         <tr>
@@ -14,6 +15,7 @@
             <td>{{$animal->type}}</td>
             <td>{{$animal->nom}}</td>
             <td>{{$animal->prix}}</td>
+            <td><a></a></td>
         </tr>
     @endforeach
 </table>

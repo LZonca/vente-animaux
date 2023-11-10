@@ -46,6 +46,11 @@ Route::get('/animaux/{id}', function ($id) {
         return view('animaux.show', compact('animal'));
 });
 
+Route::get('/animaux/{id}/edit', function ($id) {
+    $animal = Animal::findOrFail($id);
+    
+    return view('animaux.edit', compact('animal'));
+})->name('editer');
 
 
 
