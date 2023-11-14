@@ -2,6 +2,8 @@
 
 use App\Models\Animal;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AnimauxController;
+use function Laravel\Prompts\error;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,46 +15,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/animaux', function (){
-    $titre_page = 'TOUS LES ANIMAUX ILLEGAUX A VENDRE';
-    $animaux = Animal::all();
-    return view('animaux.index', compact('animaux'));
-});
-Route::get('/animaux/create', function () {
-    $titre_page = "CREER UN ANIMAL ILLEGAL";
-    return view("animaux.create");
-});
+Route::get('/animaux', [AnimauxController::class, 'index'])->name('index');
 
-Route::post('/animaux', function () {
-    $a = new Animal();
-    $a->nom = request()->nom;
-    $a->type = request()->type;
-    $a->prix = request()->prix;
-    $a->date_naissance = request()->date_naissance;
-    $a->save();
-    return redirect('/animaux/'. $a->id);
-});
+Route::get('/animaux/create', [AnimauxController::class, 'create'])->name('create');
 
-Route::get('/animaux/{id}', function ($id) {
-    $titre_page = "UN ANIMAL ILLEGAL";
-    //$animaux = Animal::all();
-        /*try{
-            $animal = Animal::find($id);
-        return view('animaux.show', compact('animal'));
-        }catch (Exception $e) {
-            return response('CET ANIMAL N\'EXISTE PAS', 404);
-        }*/
-        $animal = Animal::findOrFail($id);
-        return view('animaux.show', compact('animal'));
-});
+Route::post('/animaux', [AnimauxController::class, 'store'])->name('store');
 
-Route::get('/animaux/{id}/edit', function ($id) {
-    $animal = Animal::findOrFail($id);
-    
-    return view('animaux.edit', compact('animal'));
-})->name('editer');
+Route::delete('/animaux/{id}', [AnimauxController::class, 'delete'])->name('delete');
 
+Route::get('/animaux/{id}', [AnimauxController::class, 'show'])->name('show');
 
+Route::get('/animaux/{id}/edit', [AnimauxController::class, 'edit'])->name('editer');
+
+Route::patch('/animaux/{id}', [AnimauxController::class, 'update'])->name('update');
 
 Route::get('/', function () {
     return view('welcome');

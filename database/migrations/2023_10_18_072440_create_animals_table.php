@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('type');
             $table->integer('prix');
-            $table->dateTime('date_naissance');
+            $table->date('date_naissance');
             $table->timestamps();
         });
     }

@@ -11,11 +11,17 @@
     </tr>
     @foreach ($animaux as $animal)
         <tr>
-            <td><a href="/animaux/{{$animal['id']}}">{{$animal['id']}}</a></td>
-            <td>{{$animal->type}}</td>
-            <td>{{$animal->nom}}</td>
-            <td>{{$animal->prix}}</td>
-            <td><a></a></td>
+            <td><a href="/animaux/{{ $animal['id'] }}">{{ $animal['id'] }}</a></td>
+            <td>{{ $animal->type }}</td>
+            <td>{{ $animal->nom }}</td>
+            <td>{{ $animal->prix }}</td>
+            <td><a href='/animaux/{{ $animal['id'] }}/edit'><button>EDIT</button></a>
+                <form method="POST" action="/animaux/{{ $animal->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" name="btnDelete">DELETE</button>
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>
