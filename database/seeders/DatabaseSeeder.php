@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+        \App\Models\Animal::factory(10)->create();
         $this->call([
+
             AnimalSeeder::class,
         ]);
+
     }
-
-
 }

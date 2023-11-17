@@ -36,6 +36,11 @@
         <p style='color:red;'>{{ $message }}</p>
     @enderror
     <br>
+    <label for="img_link">Image:</label>
+    <input type="image" name="img_link" value="{{ old('date_naissance') }}"><br>
+    @error('date_naissance')
+        <p style='color:red;'>{{ $message }}</p>
+    @enderror
     <button name="btnCreate">Créer un animal</button>
 </form>
-<a href='/animaux/'><button>Retour</button></a>
+<a href='/animaux/'><button class="btn btn-blue">Retour</button></a>

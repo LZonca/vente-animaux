@@ -14,8 +14,9 @@ class AnimauxController extends Controller
         return view('animaux.index', compact('animaux'));
     }
 
-    public function show(){
+    public function show($id){
         $titre_page = 'UN ANIMAL ILLEGAL';
+        $animal = Animal::findOrFail($id);
         return view('animaux.show', compact('animal'));
     }
 
@@ -40,12 +41,12 @@ class AnimauxController extends Controller
         return redirect('/animaux/' . $a->id);
     }
 
-    public function edit(Animal $id){
+    public function edit($id){
         $animal = Animal::findOrFail($id);
         return view('animaux.edit', compact('animal'));
     }
 
-    public function update(Animal $id){
+    public function update($id){
         request()->validate([
             'nom' => ['required', 'string'],
             'type' => ['required', 'string'],
@@ -61,7 +62,7 @@ class AnimauxController extends Controller
         return redirect('/animaux/' . $animal->id);
     }
 
-    public function destroy(Animal $id){
+    public function destroy($id){
         $id->delete();
         return redirect('/animaux');
     }

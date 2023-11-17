@@ -1,7 +1,9 @@
+
 @extends('layout')
 @section('title', 'THE ANIMAUL')
 @section('main')
     <h1>THE ANIMAUL</h1>
+    <img src="{{ $animal->img_link }}"/>
     <ul>
         <li>Numero: {{ $animal->id }}</li>
         <li>Type: {{ $animal->type }}</li>
