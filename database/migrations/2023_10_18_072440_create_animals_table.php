@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('prix');
             $table->date('date_naissance');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

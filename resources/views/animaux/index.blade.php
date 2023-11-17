@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'TOUS LES ANIMAUX')
 <h1>TOUS LES ANIMAUX <a href="/animaux/create"> Créer</a></h1>
-<table>
+<table class="margin: auto">
     <tr>
         <th>ID</th>
         <th>Type</th>

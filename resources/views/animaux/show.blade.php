@@ -9,6 +9,7 @@
         <li>Type: {{ $animal->type }}</li>
         <li>Nom: {{ $animal->nom }}</li>
         <li>Prix: {{ $animal->prix }}</li>
+        <li>Proprio: {{ $animal->owner->name }}</li>
     </ul>
     <a href='/animaux/{{ $animal['id'] }}/edit'><button>EDIT</button></a>
     <a href='/animaux/'><button>Retour</button></a>

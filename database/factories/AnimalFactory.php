@@ -21,6 +21,7 @@ class AnimalFactory extends Factory
             'type'=>fake()->emoji(),
             'prix'=>fake()->numberBetween(0,10000),
             'date_naissance'=>fake()->date("Y-m-d"),
+            'user_id' => 1,
             'img_link'=>fake()->imageUrl(),
         ];
     }

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         \App\Models\Animal::factory(10)->create();
         $this->call([
-
+            UserSeeder::class,
             AnimalSeeder::class,
         ]);
 
