@@ -15,19 +15,7 @@ use function Laravel\Prompts\error;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/animaux', [AnimauxController::class, 'index'])->name('index');
 
-Route::get('/animaux/create', [AnimauxController::class, 'create'])->name('create');
-
-Route::post('/animaux', [AnimauxController::class, 'store'])->name('store');
-
-Route::delete('/animaux/{id}', [AnimauxController::class, 'delete'])->name('delete');
-
-Route::get('/animaux/{id}', [AnimauxController::class, 'show'])->name('show');
-
-Route::get('/animaux/{id}/edit', [AnimauxController::class, 'edit'])->name('editer');
-
-Route::patch('/animaux/{id}', [AnimauxController::class, 'update'])->name('update');
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,4 +29,18 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/animaux', [AnimauxController::class, 'index'])->name('index');
+
+    Route::get('/animaux/create', [AnimauxController::class, 'create'])->name('create');
+
+    Route::post('/animaux', [AnimauxController::class, 'store'])->name('store');
+
+    Route::delete('/animaux/{animal}', [AnimauxController::class, 'destroy'])->name('delete');
+
+    Route::get('/animaux/{animal}', [AnimauxController::class, 'show'])->name('show');
+
+    Route::get('/animaux/{animal}/edit', [AnimauxController::class, 'edit'])->name('editer');
+
+    Route::patch('/animaux/{animal}', [AnimauxController::class, 'update'])->name('update');
 });
