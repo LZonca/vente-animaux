@@ -47,4 +47,8 @@ Route::middleware([
     Route::get('/animaux/{animal}/edit', [AnimauxController::class, 'edit'])->name('editer');
 
     Route::patch('/animaux/{animal}', [AnimauxController::class, 'update'])->name('update');
+
+    Route::get('/admin', function(){
+        return view('admin.admin-pannel');
+    })->name('administration')->middleware(\App\Http\Middleware\IsAdmin::class);
 });

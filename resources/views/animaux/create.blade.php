@@ -1,7 +1,6 @@
 @extends('layout')
 @section('title', 'CREER UN ANIMAL')
-<h1>
-    CREER UN ANIMAL</h1>
+<h1>CREER UN ANIMAL</h1>
 
 {{-- @if ($errors->any())
     @foreach ($errors->all() as $error)
